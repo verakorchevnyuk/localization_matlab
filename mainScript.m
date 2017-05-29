@@ -12,7 +12,7 @@ close all
 mics = getCirclePositions(8, 0.1);
 
 % Sound source
-sound_source = [5 -5];
+sound_source = calcPos( 90, 1 );
 
 % Signal and sampling frequency
     % [full_signal, fs] = audioread('female_2.wav');
@@ -125,5 +125,3 @@ subplot(2,2,4)
 plotv(v_srp_various')
 axis ([-room_width/2 room_width/2 -room_length/2 room_length/2])
 title('SRP double source, chosen vector')
-
-close figure 2
