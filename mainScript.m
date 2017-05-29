@@ -71,59 +71,59 @@ axis ([-rw/2 rw/2 -rl/2 rl/2])
 title('Geometric solution')
 legend('real', 'geo solution')
 
-% %% SRP approach
-% 
-% % Room dimensions
-% room_width = rw;
-% room_length = rl;
-% 
-% % Grid size
-% cell_size = 0.05;
-% 
-% subplot(2,2,2)
-% plot(signal)
-% subplot(2,2,3)
-% v_srp_single = srpApproach(delayed_signals, mics, fs, cell_size, room_width, room_length);
-% title('SRP single source map');
-% subplot(2,2,4)
-% plotv(v_srp_single')
-% axis ([-rw/2 rw/2 -rl/2 rl/2])
-% title('SRP single source, chosen vector')
-% 
-% %% Several sound sources
-% 
-% % Two signals
-% b1 = randi(length(full_signal)-window_size, 1);
-% b2 = randi(length(full_signal)-window_size, 1);
-% sig1 = full_signal(b1:b1+window_size-1);
-% sig2 = full_signal(b2:b2+window_size-1);
-% 
-% % Two sound sources
-% sound_source1 = [1 1];
-% sound_source2 = [-1 -0.5];
-% 
-% delays1 = simDelays(sound_source1, mics);
-% delays2 = simDelays(sound_source2, mics);
-% delays1 = removeSmallestDelay(delays1);
-% delays2 = removeSmallestDelay(delays2);
-% delayed_signals1 = delayedSignals(sig1, delays1, fs);
-% delayed_signals2 = delayedSignals(sig2, delays2, fs);
-% 
-% delayed_signals3 = delayed_signals1+delayed_signals2;
-% 
-% figure
-% subplot(2,2,1)
-% plot(sig1)
-% title('Signal 1')
-% subplot(2,2,2)
-% plot(sig2)
-% title('Signal 2')
-% subplot(2,2,3)
-% v_srp_various = srpApproach(delayed_signals3, mics, fs, cell_size, room_width, room_length);
-% title('SRP double source map')
-% subplot(2,2,4)
-% plotv(v_srp_various')
-% axis ([-room_width/2 room_width/2 -room_length/2 room_length/2])
-% title('SRP double source, chosen vector')
-% 
-% close figure 2
+%% SRP approach
+
+% Room dimensions
+room_width = rw;
+room_length = rl;
+
+% Grid size
+cell_size = 0.05;
+
+subplot(2,2,2)
+plot(signal)
+subplot(2,2,3)
+v_srp_single = srpApproach(delayed_signals, mics, fs, cell_size, room_width, room_length);
+title('SRP single source map');
+subplot(2,2,4)
+plotv(v_srp_single')
+axis ([-rw/2 rw/2 -rl/2 rl/2])
+title('SRP single source, chosen vector')
+
+%% Several sound sources
+
+% Two signals
+b1 = randi(length(full_signal)-window_size, 1);
+b2 = randi(length(full_signal)-window_size, 1);
+sig1 = full_signal(b1:b1+window_size-1);
+sig2 = full_signal(b2:b2+window_size-1);
+
+% Two sound sources
+sound_source1 = [1 1];
+sound_source2 = [-1 -0.5];
+
+delays1 = simDelays(sound_source1, mics);
+delays2 = simDelays(sound_source2, mics);
+delays1 = removeSmallestDelay(delays1);
+delays2 = removeSmallestDelay(delays2);
+delayed_signals1 = delayedSignals(sig1, delays1, fs);
+delayed_signals2 = delayedSignals(sig2, delays2, fs);
+
+delayed_signals3 = delayed_signals1+delayed_signals2;
+
+figure
+subplot(2,2,1)
+plot(sig1)
+title('Signal 1')
+subplot(2,2,2)
+plot(sig2)
+title('Signal 2')
+subplot(2,2,3)
+v_srp_various = srpApproach(delayed_signals3, mics, fs, cell_size, room_width, room_length);
+title('SRP double source map')
+subplot(2,2,4)
+plotv(v_srp_various')
+axis ([-room_width/2 room_width/2 -room_length/2 room_length/2])
+title('SRP double source, chosen vector')
+
+close figure 2
