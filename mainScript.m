@@ -12,7 +12,7 @@ close all
 mics = getCirclePositions(8, 0.1);
 
 % Sound source
-sound_source = calcPos( 90, 1 );
+sound_source = calcPos( -15, 1 );
 
 % Signal and sampling frequency
     % [full_signal, fs] = audioread('female_2.wav');
