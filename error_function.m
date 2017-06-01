@@ -27,13 +27,13 @@ signal = 2*rand(2^20, 1) - 1; % Noise
 window_size = 0.5 * fs;
 
 % Working signal
-b = randi(length(full_signal)-window_size, 1);
-signal = full_signal (b:b+window_size-1);
+b = randi(length(signal)-window_size, 1);
+signal = signal (b:b+window_size-1);
 
 %% Calculate error
 
-dist = 0:0.1:1; % every 10 cm
-angle = 0:10:360; % every degree
+dist = 0.1:0.1:.5; % every 10 cm
+angle = 0:1:360; % every degree
 z = zeros(length(dist), length(angle));
 % z = zeros(size(w));
 
@@ -44,8 +44,10 @@ for i = 1:length(dist)
         
         delays = simDelays(v_real, mics);
         delays = removeSmallestDelay(delays);
-        delayed_signals = delayedSignals(signal, delays, fs);
-        D = delayCalculation( delayed_signals, fs, 1 );
+%         delayed_signals = delayedSignals(signal, delays, fs);
+%         D = delayCalculation( delayed_signals, fs, 1 );
+%         D = delays;
+        D = round(delays * fs)      / fs;
         D = D - mean(D);
         
         v_result = geometricApproach( D, mics, fs);
