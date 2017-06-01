@@ -11,7 +11,7 @@ function [ direction_vector ] = geometricApproach( delays, mics_position, fs )
 P = mics_position;
 D = delays;
 
-v = P\-D
+v = P\-D;
 % --improvement: provide the pinv outside the loop and only multiply by
 % delays, ie v = Pinv*D
 
